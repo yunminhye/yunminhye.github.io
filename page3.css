@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #2d2d2d;
+  color: white;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.left-box {
+  flex: 1;
+  position: relative;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  background-color: white;
+  color: black;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+.image-slider {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.arrow {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.arrow:hover {
+  background-color: white;
+  color: black;
+}
+
+.main-image {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 16px;
+  object-fit: contain;
+  margin: 0 20px;
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 24px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.right-box {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand {
+  align-self: flex-start;
+  font-size: 12px;
+  border: 1px solid white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cccccc;
+}

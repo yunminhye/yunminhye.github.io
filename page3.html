@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seasonal Eating</title>
+  <link rel="stylesheet" href="page1.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <!-- 왼쪽 -->
+    <div class="left-box">
+      <!-- 메뉴 -->
+      <div class="menu">
+        <a href="index.html">
+          <span class="material-symbols-outlined">arrow_back_ios</span>Back
+        </a>
+      </div>
+
+      <!-- 이미지 슬라이더 -->
+      <div class="image-slider">
+        <span class="arrow left material-symbols-outlined">arrow_back_ios</span>
+        <img id="slider-image" src="images/loding.png" class="main-image" alt="Slide Image" />
+        <span class="arrow right material-symbols-outlined">arrow_forward_ios</span>
+      </div>
+
+      <!-- 슬라이드별 버튼 -->
+      <button class="button" id="image-button">WORKING...</button>
+    </div>
+
+    <!-- 오른쪽 -->
+    <div class="right-box">
+      <div class="brand"></div>
+      <h1 class="title">Not yet!</h1>
+      <p class="description" id="description-box">
+        <!-- JS에서 자동 삽입 -->
+      </p>
+    </div>
+  </div>
+
+  <!-- 자바스크립트 -->
+ <script>
+  const images = [
+    "images/loding.png",
+  
+  ];
+
+  const descriptions = [
+    `더 분발해서 오겠습니다!`,
+  ];
+
+  let currentIndex = 0;
+  const imageElement = document.getElementById("slider-image");
+  const descriptionBox = document.getElementById("description-box");
+  const leftArrow = document.querySelector(".arrow.left");
+  const rightArrow = document.querySelector(".arrow.right");
+
+  function updateContent() {
+    imageElement.src = images[currentIndex];
+    descriptionBox.innerHTML = descriptions[currentIndex];
+  }
+
+  leftArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateContent();
+  });
+
+  rightArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateContent();
+  });
+
+  // 페이지 로드 시 첫 이미지와 설명 표시
+  window.addEventListener("DOMContentLoaded", updateContent);
+</script>
+</body>
+</html>

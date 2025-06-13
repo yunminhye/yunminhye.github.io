@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seasonal Eating</title>
+  <link rel="stylesheet" href="page1.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <!-- 왼쪽 -->
+    <div class="left-box">
+      <!-- 메뉴 -->
+      <div class="menu">
+        <a href="index.html">
+          <span class="material-symbols-outlined">arrow_back_ios</span>Back
+        </a>
+      </div>
+
+      <!-- 이미지 슬라이더 -->
+      <div class="image-slider">
+        <span class="arrow left material-symbols-outlined">arrow_back_ios</span>
+        <img id="slider-image" src="images/bell_package.png" class="main-image" alt="Slide Image" />
+        <span class="arrow right material-symbols-outlined">arrow_forward_ios</span>
+      </div>
+
+      <!-- 슬라이드별 버튼 -->
+      <button class="button">   </button>
+    </div>
+
+    <!-- 오른쪽 -->
+    <div class="right-box">
+      <div class="brand">Computer Graphics</div>
+      <h1 class="title">Album Cover & Package (Individual Work)</h1>
+      <p class="description" id="description-box">
+        <!-- JS에서 자동 삽입 -->
+      </p>
+    </div>
+  </div>
+
+  <!-- 자바스크립트 -->
+ <script>
+  const images = [
+    "images/LP표지_윤민혜.jpg",
+    "images/러브노트.png",
+    "images/마크로스.png",
+    "images/선셋로드 복사본.png"  // ⬅️ 네 번째 이미지 추가
+  ];
+
+  const descriptions = [
+    `'Just the Two of Us'는 기존 음악을 바탕으로 진행한 앨범 리디자인 프로젝트입니다.<br>
+     원곡의 따뜻하고 로맨틱한 감성을 시각적으로 재해석하여, 커버 아트워크부터 상세 페이지, 패키지 목업까지 일관된 분위기로 구성하였습니다.<br>
+     기획, 콘셉트 설정, 타이포그래피, 그래픽 디자인 등 전 과정은 1인 작업으로 완성하였습니다.<br><br>
+     [Eng] Just the Two of Us is a redesign project based on the well-known track by Grover Washington Jr. and Bill Withers.
+     The project reinterprets the song’s warm and romantic mood into a cohesive visual concept—spanning cover artwork, detailed layouts, and package mockups.
+     All design stages, from concept planning to final execution, were carried out individually.`,
+
+   `‘Love Note’는 짧은 편지처럼 소중한 감정을 담은 곡으로, 따뜻하고 섬세한 분위기를 표현한 리디자인 프로젝트입니다.<br>
+이 작업에서 저는 상세 페이지와 패키지 목업 디자인을 맡아, 감정의 결을 시각적으로 구성하였습니다.<br><br> 
+   [Eng] Love Note is a redesign project that visually interprets the warmth of a heartfelt letter.<br>
+I was responsible for the detail layout and package mockup, emphasizing intimacy through gentle composition and color.`,
+
+    `마크로스 82–99의 복고적이면서도 미래지향적인 사운드를 시각화한 리디자인 프로젝트입니다.<br>
+본 작업에서는 상세 페이지와 패키지 목업 디자인을 진행하였으며, 시티팝 특유의 몽환적이고 레트로한 무드를 담아내고자 하였습니다.<br><br> 
+   [Eng] MACROSS 82–99 is a redesign project that reflects retro-futuristic aesthetics inspired by city pop.
+I contributed the detail page design and package mockup, capturing the dreamy and nostalgic atmosphere of the sound.`,
+
+    `‘Sunset Road’는 황혼의 감성과 여운을 담은 곡을 바탕으로 제작된 앨범 리디자인 프로젝트입니다.<br>
+본 프로젝트에서는 상세 페이지와 패키지 목업 디자인을 직접 작업하여, 곡이 전달하는 정서를 부드럽고 감성적인 시각 요소로 풀어냈습니다.<br><br> 
+   [Eng] Sunset Road is an album redesign project inspired by the sentimental warmth of twilight.
+For this project, I created the detail page and package mockup, focusing on translating the track’s emotional tone into soft, cinematic visuals.`  // ⬅️ 설명 추가
+  ];
+
+  let currentIndex = 0;
+  const imageElement = document.getElementById("slider-image");
+  const descriptionBox = document.getElementById("description-box");
+  const leftArrow = document.querySelector(".arrow.left");
+  const rightArrow = document.querySelector(".arrow.right");
+
+  function updateContent() {
+    imageElement.src = images[currentIndex];
+    descriptionBox.innerHTML = descriptions[currentIndex];
+  }
+
+  leftArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateContent();
+  });
+
+  rightArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateContent();
+  });
+
+  // 페이지 로드 시 첫 이미지와 설명 표시
+  window.addEventListener("DOMContentLoaded", updateContent);
+</script>
+</body>
+</html>

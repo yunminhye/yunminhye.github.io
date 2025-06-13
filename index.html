@@ -1,75 +1,174 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>중간과제_윤민혜</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,600,0,0&icon_names=dehaze" />
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>스크롤 이미지 캐러셀</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <a href="#"> <div id="logo"> TimeLight</div></a>
-        <div id="center"><a href="#">project</a></div>
-        <div id="smallcenter"><a href="#">Computer Graphics(b)</a></div>
-        <div class="navmenu">
-            <a href="#"> 
-                <span class="material-symbols-outlined"> dehaze </span> </a> </div>
-    </header>
+  <!-- 배경 색을 위한 빈 div (선택 사항) -->
+  <div class="bg-color"></div>
 
-    <!-- Main Content -->
-    <main>
-        <img class="mainlogo" src="images/제품 로고.png" alt="Main Logo">
+  <!-- 왼쪽 이미지 슬라이드 박스 -->
+  <div class="content-box">
+    <div class="slider-wrapper">
+      <div class="image-wrapper slide">
+        <img src="images/hello_overay.png" class="base-image" alt="기본">
+        <img src="images/cat.png" class="hover-image" alt="호버">
+      </div>
+      <div class="image-wrapper slide">
+          <div class="caption-title">“Designing beyond form toward emotion.”</div>
 
-        <div class="pictures">
-            <div class="picture-item">
-                <img src="images/벨 패키지목업.png" alt="패키지1">
-                <p class="caption">package mokup <br> bell </p>
-            </div>
-            <div class="picture-item">
-                <img src="images/박스 패키지.png" alt="패키지2">
-                <p class="caption">package box mokup </p>
-            </div>
-            <div class="picture-item">
-                <img src="images/눈꽃 패키지목업.png" alt="패키지3">
-                <p class="caption">package mokup <br> snow sparkle</p>
-            </div>
-        </div>
-    </main>
+      </div>
+      <div class="image-wrapper slide">
+          <div class="caption-title">Contact<br><br>
+                                      Yun minhye <br><br>
+                                       📧 munhye@gmail.com<br><br> 
+                                      📱 +82 10-4997-5216<br><br>
+                                      🔗 @minhye.design</div>
+      </div>
+    </div>
+    <div class="dots">
+      <div class="dot dot1"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
 
-    <div id="maintext">
-        <h3 class="title">Main</h3>
+  <!-- 오른쪽 캐러셀 -->
+  <!-- 오른쪽 캐러셀 -->
+<div class="right-box">
+  <div class="carousel">
+    <div class="carousel-item center">
+      <img src="images/candle.png" />
+      <a class="caption" href="page1.html">
+        <div class="caption-title">Computer Graphics 🕯️</div>
+        <div class="caption-body">Work: Planning Composition Wooden Design</div>
+      </a>
+    </div>
+    <div class="carousel-item">
+      <img src="images/LP표지_윤민혜.jpg" />
+      <a class="caption" href="page2.html">
+        <div class="caption-title">Computer graphics 🎧</div>
+        <div class="caption-body">Work: Makeing on the album</div>
+      </a>
+    </div>
+    <div class="carousel-item">
+      <img src="images/Fashion magazine.png" />
+      <a class="caption" href="page3.html">
+        <div class="caption-title">Digital Design</div>
+        <div class="caption-body">Work: Fashion magazine</div>
+      </a>
+    </div>
+  </div>
+</div>
 
-        <div class="desc">I. Project name</div>
-        <div class="option">제품 포장디자인 & 목업</div>
 
-        <div class="desc">II. Project Overview</div>
-        <div class="option">
-            ○ 포토샵, 일러스트레이터, 인디자인 등 다양한 디자인 도구를 통합해 사용하며 작업을 진행한다.<br>
-            ○ 디자인과정과 결과물에 대한 전반을 문서형태로 정리한다.<br><br>
-            역할: 기획, 디자인, 일러스트<br>
-            작업기간: 2024.10 ~ 2024.11<br>
-            사용툴: Adobe (Illustrator, Photoshop)
-        </div>
-         <div class="desc">III. Concept</div>
-         <div class="option">
-            출발: 한 해의 마지막 축제인 크리스마스는 어른아이 상관없이 기다려지는 시즌이다.<br>
-            캔들회사와 연관시켜 기획 구성해 보았다.<br><br>
-            주요컨셉: 2024 크리스마스 리미티드 에디션 (트리 오너먼트 증정)<br><br>
-            테마<br>
-            - 베리 → 열매<br>
-            - 우디 → 루돌프<br>
-            - 머스크 → 눈송이</div>
-         <div class="desc">IV. Final Outcome</div>
-         <div class="option">  ※ 모의작업</div>
-         </div>
- 
-    <!-- Footer -->
-    <footer>
-        Copyright &copy; 2025 뉴미디어&게임디자인과
-    </footer>
 
+
+    <!--스크립트 -->
+  <script>
+    // 왼쪽 슬라이드
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const contentBox = document.querySelector('.content-box');
+    let currentIndex = 0;
+    let isHovered = false;
+    let isScrollingLeft = false;
+
+    function updateSlide() {
+      slides.forEach((slide, i) => {
+        slide.style.transform = `translateY(${(i - currentIndex) * 100}%)`;
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('dot1', i === currentIndex);
+      });
+    }
+
+    contentBox.addEventListener('mouseenter', () => isHovered = true);
+    contentBox.addEventListener('mouseleave', () => {
+      isHovered = false;
+      currentIndex = 0;
+      updateSlide();
+    });
+
+    window.addEventListener('wheel', (e) => {
+      if (!isHovered || isScrollingLeft) return;
+      if (e.deltaY > 0 && currentIndex < slides.length - 1) currentIndex++;
+      else if (e.deltaY < 0 && currentIndex > 0) currentIndex--;
+      updateSlide();
+      isScrollingLeft = true;
+      setTimeout(() => isScrollingLeft = false, 800);
+    });
+
+    updateSlide();
+
+    // 오른쪽 캐러셀
+    const carousel = document.querySelector('.carousel');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const rightBox = document.querySelector('.right-box');
+    const itemCount = carouselItems.length;
+    const itemSpacing = 280;
+    let scrollIndex = 0;
+    let isScrolling = false;
+
+    function updateCarousel() {
+      const centerY = window.innerHeight / 2;
+
+      carouselItems.forEach((item, i) => {
+        const offset = ((i - scrollIndex + itemCount) % itemCount + itemCount) % itemCount;
+        const distance = offset <= itemCount / 2 ? offset : offset - itemCount;
+
+        const translateY = centerY + distance * itemSpacing;
+
+        const scale = distance === 0 ? 1.2 : Math.max(1 - Math.abs(distance) * 0.2, 0.5);
+        const opacity = distance === 0 ? 1 : Math.max(1 - Math.abs(distance) * 0.4, 0.2);
+        const blur = distance === 0 ? 0 : Math.min(Math.abs(distance) * 2, 8);
+        const brightness = distance === 0 ? 1 : Math.max(1 - Math.abs(distance) * 0.2, 0.4);
+        const z = 100 - Math.abs(distance);
+
+        item.style.transform = `translate(-50%, ${translateY - 120}px) scale(${scale})`;
+        item.style.zIndex = z;
+
+        const img = item.querySelector('img');
+        img.style.opacity = opacity;
+        img.style.filter = `blur(${blur}px) brightness(${brightness})`;
+
+        if (distance === 0) {
+          item.classList.add('center');
+        } else {
+          item.classList.remove('center');
+        }
+      });
+    }
+
+    rightBox.addEventListener('wheel', (e) => {
+      if (isScrolling) return;
+      isScrolling = true;
+
+      scrollIndex = e.deltaY > 0
+        ? (scrollIndex + 1) % itemCount
+        : (scrollIndex - 1 + itemCount) % itemCount;
+
+      updateCarousel();
+
+      setTimeout(() => isScrolling = false, 400);
+    });
+
+    updateCarousel();
+
+    // 중앙 항목만 클릭시 이동
+document.querySelectorAll('.carousel-item').forEach(item => {
+  const caption = item.querySelector('.caption');
+  caption.addEventListener('click', () => {
+    if (item.classList.contains('center')) {
+      const url = caption.dataset.url;
+      if (url) window.location.href = url;
+    }
+  });
+});
+
+  </script>
 </body>
 </html>

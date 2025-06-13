@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Seasonal Eating</title>
+  <link rel="stylesheet" href="page1.css">
+  <!-- 구글 아이콘 폰트 링크 -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <!-- 왼쪽 -->
+    <div class="left-box">
+      <div class="menu">
+        <a href="index.html">
+          <span class="material-symbols-outlined">arrow_back_ios</span>Back
+        </a>
+      </div>
+
+      <!-- 이미지 슬라이더 -->
+      <div class="image-slider">
+        <span class="arrow left material-symbols-outlined">arrow_back_ios</span>
+        <img id="slider-image" src="images/logo.png" class="main-image" alt="Slide Image">
+        <span class="arrow right material-symbols-outlined">arrow_forward_ios</span>
+      </div>
+
+      <button class="button">   </button>
+    </div>
+
+    <!-- 오른쪽 -->
+    <div class="right-box">
+      <div class="brand">Computer graphics</div>
+      <h1 class="title">Candle Product Design (Individual Work)</h1>
+      <p class="description">
+       🎄크리스마스 시즌에 어울리는 감성적인 분위기와 따뜻함을 담은 캔들을 기획하였습니다.<br>
+단순한 소품을 넘어, 연말의 공간을 감싸는 ‘분위기 연출 아이템’으로서의 가치를 강조하고자 했습니다.<br>
+전체 디자인 과정은 제품 기획, 콘셉트 설정, 그래픽 구성, 그리고 3D 목업 제작까지 1인 작업으로 진행하였습니다.<br><br>
+[Eng]  This candle design project was created as a limited seasonal product for the Christmas holidays.<br>
+It aims to capture the warmth and sentimental mood of the season, <br>
+serving not just as a product but as an atmosphere enhancer.<br>
+The entire process—from concept planning to 3D mockup—was executed individually.
+      </p>
+    </div>
+  </div>
+
+  <!-- 자바스크립트 (중복 제거 + 정리됨) -->
+  <script>
+    const images = [
+      "images/bell_package.png",
+      "images/box_package.png",
+      "images/snow_package.png"
+    ];
+
+    let currentIndex = 0;
+    const imageElement = document.getElementById("slider-image");
+    const leftArrow = document.querySelector(".arrow.left");
+    const rightArrow = document.querySelector(".arrow.right");
+
+    function updateImage() {
+      imageElement.src = images[currentIndex];
+    }
+
+    leftArrow.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateImage();
+    });
+
+    rightArrow.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage();
+    });
+  </script>
+</body>
+</html>
